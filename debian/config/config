@@ -2181,6 +2181,7 @@ CONFIG_DVB_FIREDTV=m
 ##
 ## file: drivers/media/i2c/Kconfig
 ##
+CONFIG_VIDEO_HI846=m
 # CONFIG_VIDEO_MT9M001 is not set
 # CONFIG_VIDEO_MT9T112 is not set
 # CONFIG_VIDEO_OV2640 is not set
