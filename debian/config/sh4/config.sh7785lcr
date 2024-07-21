@@ -1,6 +1,7 @@
 ##
 ## file: arch/Kconfig
 ##
+# CONFIG_KPROBES is not set
 ## choice: MMU page size
 CONFIG_PAGE_SIZE_4KB=y
 ## end choice
@@ -39,6 +40,12 @@ CONFIG_HUGETLB_PAGE_SIZE_64K=y
 ## end choice
 
 ##
+## file: block/Kconfig
+##
+# CONFIG_BLK_DEV_ZONED is not set
+# CONFIG_BLK_SED_OPAL is not set
+
+##
 ## file: drivers/ata/Kconfig
 ##
 CONFIG_ATA=y
@@ -48,9 +55,24 @@ CONFIG_ATA_SFF=y
 CONFIG_SATA_SIL=y
 
 ##
+## file: drivers/base/firmware_loader/Kconfig
+##
+CONFIG_FW_LOADER=m
+
+##
+## file: drivers/char/hw_random/Kconfig
+##
+# CONFIG_HW_RANDOM is not set
+
+##
 ## file: drivers/clocksource/Kconfig
 ##
 CONFIG_SH_TIMER_TMU=y
+
+##
+## file: drivers/connector/Kconfig
+##
+CONFIG_CONNECTOR=m
 
 ##
 ## file: drivers/dma/Kconfig
@@ -66,6 +88,11 @@ CONFIG_HID=m
 ## file: drivers/hid/usbhid/Kconfig
 ##
 CONFIG_USB_HID=m
+
+##
+## file: drivers/hwmon/Kconfig
+##
+CONFIG_HWMON=m
 
 ##
 ## file: drivers/i2c/Kconfig
@@ -172,6 +199,15 @@ CONFIG_R8169=m
 ## file: drivers/pci/Kconfig
 ##
 CONFIG_PCI=y
+# CONFIG_PCI_IOV is not set
+
+##
+## file: drivers/pci/pcie/Kconfig
+##
+# CONFIG_PCIEAER is not set
+# CONFIG_PCIEASPM is not set
+# CONFIG_PCIE_DPC is not set
+# CONFIG_PCIE_PTM is not set
 
 ##
 ## file: drivers/rtc/Kconfig
@@ -215,6 +251,12 @@ CONFIG_USB_EHCI_HCD=y
 CONFIG_USB_R8A66597_HCD=y
 
 ##
+## file: drivers/usb/misc/Kconfig
+##
+#. Selects BACKLIGHT_CLASS_DEVICE which is always built-in
+# CONFIG_USB_APPLEDISPLAY is not set
+
+##
 ## file: drivers/usb/storage/Kconfig
 ##
 CONFIG_USB_STORAGE=y
@@ -232,10 +274,109 @@ CONFIG_SH_WDT=y
 # CONFIG_USBPCWATCHDOG is not set
 
 ##
+## file: fs/crypto/Kconfig
+##
+# CONFIG_FS_ENCRYPTION is not set
+
+##
+## file: fs/notify/fanotify/Kconfig
+##
+# CONFIG_FANOTIFY_ACCESS_PERMISSIONS is not set
+
+##
+## file: init/Kconfig
+##
+# CONFIG_PROFILING is not set
+
+##
+## file: kernel/Kconfig.kexec
+##
+# CONFIG_CRASH_DUMP is not set
+
+##
+## file: kernel/trace/Kconfig
+##
+# CONFIG_FUNCTION_TRACER is not set
+# CONFIG_FUNCTION_GRAPH_TRACER is not set
+# CONFIG_STACK_TRACER is not set
+# CONFIG_FTRACE_SYSCALLS is not set
+# CONFIG_UPROBE_EVENTS is not set
+
+##
+## file: lib/Kconfig.debug
+##
+# CONFIG_SCHEDSTATS is not set
+
+##
 ## file: mm/Kconfig
 ##
+# CONFIG_SLAB_FREELIST_HARDENED is not set
 ## choice: Memory model
 CONFIG_SPARSEMEM_MANUAL=y
 ## end choice
 CONFIG_MIGRATION=y
+# CONFIG_KSM is not set
 CONFIG_DEFAULT_MMAP_MIN_ADDR=4096
+# CONFIG_USERFAULTFD is not set
+
+##
+## file: mm/Kconfig.debug
+##
+# CONFIG_PAGE_EXTENSION is not set
+# CONFIG_SLUB_DEBUG is not set
+# CONFIG_PAGE_POISONING is not set
+
+##
+## file: net/Kconfig
+##
+# CONFIG_BPF_STREAM_PARSER is not set
+# CONFIG_LWTUNNEL is not set
+
+##
+## file: net/ipv6/Kconfig
+##
+#. Can be modular, but selects LWTUNNEL which cannot
+# CONFIG_IPV6_ILA is not set
+
+##
+## file: net/l3mdev/Kconfig
+##
+# CONFIG_NET_L3_MASTER_DEV is not set
+
+##
+## file: net/mpls/Kconfig
+##
+# CONFIG_NET_MPLS_GSO is not set
+
+##
+## file: net/mptcp/Kconfig
+##
+# CONFIG_MPTCP is not set
+
+##
+## file: net/switchdev/Kconfig
+##
+# CONFIG_NET_SWITCHDEV is not set
+
+##
+## file: net/xdp/Kconfig
+##
+# CONFIG_XDP_SOCKETS is not set
+
+##
+## file: security/apparmor/Kconfig
+##
+# CONFIG_SECURITY_APPARMOR_EXPORT_BINARY is not set
+
+##
+## file: security/integrity/Kconfig
+##
+# CONFIG_INTEGRITY is not set
+
+##
+## file: usr/Kconfig
+##
+# CONFIG_RD_BZIP2 is not set
+# CONFIG_RD_LZMA is not set
+# CONFIG_RD_LZO is not set
+# CONFIG_RD_LZ4 is not set
