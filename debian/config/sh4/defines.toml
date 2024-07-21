@@ -8,6 +8,9 @@ installer = true
 
 [[flavour]]
 name = 'sh7785lcr'
+[flavour.build]
+# Kernel partition size: 4 MiB
+kernel_file_max_size = 4194304
 [flavour.description]
 hardware = 'sh7785lcr'
 hardware_long = 'Renesas SH7785 reference board'
