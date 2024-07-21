@@ -12,7 +12,7 @@ from debian_linux.kconfig import KconfigFile
 class CheckSecureBootConfig:
     def __init__(self, config, dir, *_):
         self.config = config
-        self.dir = pathlib.Path(dir)
+        self.dir = dir
 
     def __call__(self, out):
         fail = 0
@@ -49,7 +49,7 @@ class Main(object):
     }
 
     def __init__(self, dir, arch, featureset, flavour, phase):
-        self.args = dir, arch, featureset, flavour
+        self.args = pathlib.Path(dir), arch, featureset, flavour
         self.phase = phase
 
         config_dirs = [
