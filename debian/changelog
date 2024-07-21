@@ -9,6 +9,7 @@ linux (6.14.4-1~exp1) UNRELEASED; urgency=medium
   [ Ben Hutchings ]
   * d/b/buildcheck.py: Reimplement check on kernel file size
   * [sh4/sh7785lcr] Define maximum kernel file size again
+  * [sh4/sh7785lcr] Revert "Modularise drivers to shrink kernel image"
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 25 Apr 2025 11:33:55 +0200
 
