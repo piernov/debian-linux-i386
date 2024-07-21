@@ -39,6 +39,7 @@ class ConfigBuild:
     enable_signed: Optional[bool] = None
     enable_vdso: Optional[bool] = None
     kernel_file: Optional[str] = None
+    kernel_file_max_size: Optional[int] = None
     kernel_stem: Optional[str] = None
 
 
