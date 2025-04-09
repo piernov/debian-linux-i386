@@ -131,15 +131,30 @@ CONFIG_EDAC_SBRIDGE=m
 CONFIG_EDAC_IGEN6=m
 
 ##
+## file: drivers/firmware/Kconfig
+##
+CONFIG_SYSFB_SIMPLEFB=y
+
+##
 ## file: drivers/gpu/drm/amd/amdkfd/Kconfig
 ##
 CONFIG_HSA_AMD_SVM=y
+
+##
+## file: drivers/gpu/drm/Kconfig
+##
+CONFIG_DRM=y
 
 ##
 ## file: drivers/gpu/drm/i915/Kconfig
 ##
 CONFIG_DRM_I915_GVT_KVMGT=m
 CONFIG_DRM_I915_PXP=y
+
+##
+## file: drivers/gpu/drm/tiny/Kconfig
+##
+CONFIG_DRM_SIMPLEDRM=y
 
 ##
 ## file: drivers/hid/amd-sfh-hid/Kconfig
