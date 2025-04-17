@@ -2,7 +2,7 @@ Section: kernel
 Priority: optional
 Maintainer: Debian Kernel Team <debian-kernel@lists.debian.org>
 Uploaders: Bastian Blank <waldi@debian.org>, maximilian attems <maks@debian.org>, Ben Hutchings <benh@debian.org>, Salvatore Bonaccorso <carnil@debian.org>
-Standards-Version: 4.2.0
+Standards-Version: 4.7.2
 Build-Depends:
  debhelper-compat (= 13),
 # used to run debian/bin/*.py
