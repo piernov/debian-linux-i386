@@ -4,6 +4,6 @@ Meta-Rules-Makeflags: INSTALLDOCS_LINK_DOC=linux-image-@abiname@@localversion@-d
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.nokerneldbg !pkg.linux.nometa !pkg.linux.quick>
 Depends: linux-image-@abiname@@localversion@-dbg (= ${binary:Version}), ${misc:Depends}
 Provides: linux-latest-image-dbg
-Description: Debugging symbols for Linux @flavour@ configuration (meta-package)
+Description: Debugging symbols for Linux @flavour@ configuration (metapackage)
  This package depends on the detached debugging symbols for the latest
  Linux kernel @flavour@ configuration.

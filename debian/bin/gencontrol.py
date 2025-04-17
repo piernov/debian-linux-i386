@@ -382,9 +382,9 @@ linux-signed-{vars['arch']} (@signedtemplate_sourceversion@) {dist}; urgency={ur
         packages_own.extend(packages_image)
         packages_own.extend(packages_headers)
 
-        # The image meta-packages will depend on signed linux-image
+        # The image metapackages will depend on signed linux-image
         # packages where applicable, so should be built from the
-        # signed source packages The header meta-packages will also be
+        # signed source packages The header metapackages will also be
         # built along with the signed packages, to create a dependency
         # relationship that ensures src:linux and src:linux-signed-*
         # transition to testing together.
