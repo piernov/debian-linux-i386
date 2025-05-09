@@ -8,3 +8,9 @@ linux-perf: shared-library-lacks-prerequisites *usr/lib/traceevent/plugins/plugi
 
 # This transition was too complex for dh_installdeb to handle
 linux-perf: maintainer-script-should-not-use-dpkg-maintscript-helper "dpkg-maintscript-helper" *
+
+# This are tests and not for running by users
+linux-perf: bash-term-in-posix-shell * [usr/lib/perf-core/tests/*
+linux-perf: executable-not-elf-or-script [usr/lib/perf-core/tests/*
+linux-perf: script-not-executable [usr/lib/perf-core/tests/*
+linux-perf: unusual-interpreter * [usr/lib/perf-core/scripts/*
