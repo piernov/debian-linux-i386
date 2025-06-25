@@ -1,8 +1,16 @@
 linux (6.15.5-1~exp2) UNRELEASED; urgency=medium
 
+  [ Ben Hutchings ]
   * rtw89: Enable RTW89_8851BE, RTW89_8852BTE as modules (Closes: #1108965)
   * rtw88: Enable RTW88_8821AU, RTW88_8812AU, RTW88_8814AE, RTW88_8814AU as
     modules
+
+  [ Loïc Minier ]
+  * [arm64] Enable Qualcomm RB1 boards (qrb2210-rb1) and other QCM2290
+    based platforms with CLK_QCM2290_GPUCC=m QCOM_CLK_SMD_RPM=y
+    QCM_GCC_2290=y QCOM_MPM=y QCOM_APCS_IPC=y PINCTRL_QCM2290=y
+    RPMSG_QCOM_GLINK_SMEM=y QCOM_SMEM=y QCOM_SMD_RPM=y; disable the now
+    obsolete RPMSG_QCOM_SMD and drop qcom_smd from kernel-image udeb.
 
  -- Ben Hutchings <benh@debian.org>  Tue, 08 Jul 2025 19:50:18 +0200
 

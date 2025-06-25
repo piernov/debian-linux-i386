@@ -66,7 +66,6 @@ phy-qcom-qmp-pcie
 qcom_glink
 qcom_glink_smem
 qcom_glink_rpm
-qcom_smd
 qcom_hwspinlock
 icc-osm-l3
 rpmpd
