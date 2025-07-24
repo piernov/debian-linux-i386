@@ -1,3 +1,10 @@
+linux (6.16~rc7-1~exp2) UNRELEASED; urgency=medium
+
+  * [arm64,ppc64*] Disable broken graphics drivers when using non-4 kiB pages:
+    DRM_NOUVEAU (see #790690), DRM_XE (see #1109776)
+
+ -- Ben Hutchings <benh@debian.org>  Thu, 24 Jul 2025 16:50:30 +0200
+
 linux (6.16~rc7-1~exp1) experimental; urgency=medium
 
   * New upstream release candidate

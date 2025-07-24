@@ -5,3 +5,15 @@
 # CONFIG_PPC_4K_PAGES is not set
 CONFIG_PPC_64K_PAGES=y
 ## end choice
+
+##
+## file: drivers/gpu/drm/nouveau/Kconfig
+##
+#. Only works with 4 kiB pages (bug #790690)
+# CONFIG_DRM_NOUVEAU is not set
+
+##
+## file: drivers/gpu/drm/xe/Kconfig
+##
+#. Only works with 4 kiB pages (bug #1109776)
+# CONFIG_DRM_XE is not set
