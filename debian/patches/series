@@ -114,4 +114,46 @@ bugfix/all/kbuild-bpf-fix-btf-reproducibility.patch
 bugfix/all/perf-docs-Fix-perf-check-manual-page-built-with-asci.patch
 bugfix/all/libbpf-use-the-standard-fixdep-build-rule.patch
 
+# Backport of Microsoft Azure Network Adapter from 6.16
+# Taken from https://salsa.debian.org/waldi/linux-stable/ branch linux-6.12.41-microsoft-mana-6.16
+features/all/microsoft-mana/0001-net-mana-Increase-the-DEF_RX_BUFFERS_PER_QUEUE-to-10.patch
+features/all/microsoft-mana/0002-net-mana-Add-get_link-and-get_link_ksettings-in-etht.patch
+features/all/microsoft-mana/0003-net-mana-Enable-debugfs-files-for-MANA-device.patch
+features/all/microsoft-mana/0004-net-mana-use-ethtool-string-helpers.patch
+features/all/microsoft-mana/0005-net-mana-Cleanup-mana-debugfs-dir-after-cleanup-of-a.patch
+features/all/microsoft-mana/0006-net-mana-Allow-tso_max_size-to-go-up-to-GSO_MAX_SIZE.patch
+features/all/microsoft-mana/0007-net-mana-Add-debug-logs-in-MANA-network-driver.patch
+features/all/microsoft-mana/0008-net-mana-cleanup-mana-struct-after-debugfs_remove.patch
+features/all/microsoft-mana/0009-net-mana-Add-metadata-support-for-xdp-mode.patch
+features/all/microsoft-mana/0010-RDMA-mana_ib-Allow-registration-of-DMA-mapped-memory.patch
+features/all/microsoft-mana/0011-RDMA-mana_ib-implement-get_dma_mr.patch
+features/all/microsoft-mana/0012-RDMA-mana_ib-helpers-to-allocate-kernel-queues.patch
+features/all/microsoft-mana/0013-RDMA-mana_ib-create-kernel-level-CQs.patch
+features/all/microsoft-mana/0014-RDMA-mana_ib-Create-and-destroy-UD-GSI-QP.patch
+features/all/microsoft-mana/0015-RDMA-mana_ib-UD-GSI-QP-creation-for-kernel.patch
+features/all/microsoft-mana/0016-RDMA-mana_ib-create-destroy-AH.patch
+features/all/microsoft-mana/0017-RDMA-mana_ib-UD-GSI-work-requests.patch
+features/all/microsoft-mana/0018-RDMA-mana_ib-implement-req_notify_cq.patch
+features/all/microsoft-mana/0019-RDMA-mana_ib-extend-mana-QP-table.patch
+features/all/microsoft-mana/0020-RDMA-mana_ib-polling-of-CQs-for-GSI-UD.patch
+features/all/microsoft-mana/0021-RDMA-mana_ib-indicate-CM-support.patch
+features/all/microsoft-mana/0022-RDMA-mana_ib-Query-feature_flags-bitmask-from-FW.patch
+features/all/microsoft-mana/0023-RDMA-mana_ib-request-error-CQEs-when-supported.patch
+features/all/microsoft-mana/0024-RDMA-mana_ib-Add-port-statistics-support.patch
+features/all/microsoft-mana/0025-RDMA-mana_ib-Fix-error-code-in-probe.patch
+features/all/microsoft-mana/0026-RDMA-mana_ib-Implement-DMABUF-MR-support.patch
+features/all/microsoft-mana/0027-RDMA-mana_ib-Use-safer-allocation-function.patch
+features/all/microsoft-mana/0028-net-mana-Change-the-function-signature-of-mana_get_p.patch
+features/all/microsoft-mana/0029-RDMA-mana_ib-Handle-net-event-for-pointing-to-the-cu.patch
+features/all/microsoft-mana/0030-RDMA-mana_ib-Fix-integer-overflow-during-queue-creat.patch
+features/all/microsoft-mana/0031-net-mana-Add-support-for-Multi-Vports-on-Bare-metal.patch
+features/all/microsoft-mana/0032-RDMA-mana_ib-Access-remote-atomic-for-MRs.patch
+features/all/microsoft-mana/0033-RDMA-mana_ib-support-of-the-zero-based-MRs.patch
+features/all/microsoft-mana/0034-RDMA-mana_ib-Add-support-of-4M-1G-and-2G-pages.patch
+features/all/microsoft-mana/0035-net-mana-Probe-rdma-device-in-mana-driver.patch
+features/all/microsoft-mana/0036-RDMA-mana_ib-Add-support-of-mana_ib-for-RNIC-and-ETH.patch
+features/all/microsoft-mana/0037-RDMA-mana_ib-unify-mana_ib-functions-to-support-any-.patch
+features/all/microsoft-mana/0038-net-mana-Add-support-for-auxiliary-device-servicing-.patch
+features/all/microsoft-mana/0039-net-mana-Fix-warnings-for-missing-export.h-header-in.patch
+
 # ABI maintenance
