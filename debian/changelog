@@ -1,3 +1,48 @@
+linux (6.12.43-2) UNRELEASED; urgency=medium
+
+  * Backport of Microsoft Azure Network Adapter from 6.16:
+    - net: mana: Increase the DEF_RX_BUFFERS_PER_QUEUE to 1024
+    - net: mana: Add get_link and get_link_ksettings in ethtool
+    - net: mana: Enable debugfs files for MANA device
+    - net: mana: use ethtool string helpers
+    - net: mana: Cleanup "mana" debugfs dir after cleanup of all children
+    - net: mana: Allow tso_max_size to go up-to GSO_MAX_SIZE
+    - net: mana: Add debug logs in MANA network driver
+    - net: mana: cleanup mana struct after debugfs_remove()
+    - net: mana: Add metadata support for xdp mode
+    - RDMA/mana_ib: Allow registration of DMA-mapped memory in PDs
+    - RDMA/mana_ib: implement get_dma_mr
+    - RDMA/mana_ib: helpers to allocate kernel queues
+    - RDMA/mana_ib: create kernel-level CQs
+    - RDMA/mana_ib: Create and destroy UD/GSI QP
+    - RDMA/mana_ib: UD/GSI QP creation for kernel
+    - RDMA/mana_ib: create/destroy AH
+    - RDMA/mana_ib: UD/GSI work requests
+    - RDMA/mana_ib: implement req_notify_cq
+    - RDMA/mana_ib: extend mana QP table
+    - RDMA/mana_ib: polling of CQs for GSI/UD
+    - RDMA/mana_ib: indicate CM support
+    - RDMA/mana_ib: Query feature_flags bitmask from FW
+    - RDMA/mana_ib: request error CQEs when supported
+    - RDMA/mana_ib: Add port statistics support
+    - RDMA/mana_ib: Fix error code in probe()
+    - RDMA/mana_ib: Implement DMABUF MR support
+    - RDMA/mana_ib: Use safer allocation function()
+    - net: mana: Change the function signature of mana_get_primary_netdev_rcu
+    - RDMA/mana_ib: Handle net event for pointing to the current netdev
+    - RDMA/mana_ib: Fix integer overflow during queue creation
+    - net: mana: Add support for Multi Vports on Bare metal
+    - RDMA/mana_ib: Access remote atomic for MRs
+    - RDMA/mana_ib: support of the zero based MRs
+    - RDMA/mana_ib: Add support of 4M, 1G, and 2G pages
+    - net: mana: Probe rdma device in mana driver
+    - RDMA/mana_ib: Add support of mana_ib for RNIC and ETH nic
+    - RDMA/mana_ib: unify mana_ib functions to support any gdma device
+    - net: mana: Add support for auxiliary device servicing events
+    - net: mana: Fix warnings for missing export.h header inclusion
+
+ -- Bastian Blank <waldi@debian.org>  Wed, 27 Aug 2025 13:34:48 +0200
+
 linux (6.12.43-1) trixie; urgency=medium
 
   * New upstream stable update:

@@ -1,0 +1,49 @@
+From 7fbb4c8c11a0ee6f5fad8da781bbbaaecf9069af Mon Sep 17 00:00:00 2001
+From: Konstantin Taranov <kotaranov@microsoft.com>
+Date: Mon, 20 Jan 2025 09:27:07 -0800
+Subject: [PATCH 10/39] RDMA/mana_ib: Allow registration of DMA-mapped memory
+ in PDs
+
+Allow the HW to register DMA-mapped memory for kernel-level PDs.
+
+Signed-off-by: Konstantin Taranov <kotaranov@microsoft.com>
+Link: https://patch.msgid.link/1737394039-28772-2-git-send-email-kotaranov@linux.microsoft.com
+Reviewed-by: Shiraz Saleem <shirazsaleem@microsoft.com>
+Reviewed-by: Long Li <longli@microsoft.com>
+Signed-off-by: Leon Romanovsky <leon@kernel.org>
+(cherry picked from commit 78683c25c80e54bf3e8015fdfb8cba2fcd03daa5)
+Signed-off-by: Bastian Blank <waldi@debian.org>
+---
+ drivers/infiniband/hw/mana/main.c | 3 +++
+ include/net/mana/gdma.h           | 1 +
+ 2 files changed, 4 insertions(+)
+
+diff --git a/drivers/infiniband/hw/mana/main.c b/drivers/infiniband/hw/mana/main.c
+index f6bf289041bf..8e0776ff4af0 100644
+--- a/drivers/infiniband/hw/mana/main.c
++++ b/drivers/infiniband/hw/mana/main.c
+@@ -82,6 +82,9 @@ int mana_ib_alloc_pd(struct ib_pd *ibpd, struct ib_udata *udata)
+ 	mana_gd_init_req_hdr(&req.hdr, GDMA_CREATE_PD, sizeof(req),
+ 			     sizeof(resp));
+ 
++	if (!udata)
++		flags |= GDMA_PD_FLAG_ALLOW_GPA_MR;
++
+ 	req.flags = flags;
+ 	err = mana_gd_send_request(gc, sizeof(req), &req,
+ 				   sizeof(resp), &resp);
+diff --git a/include/net/mana/gdma.h b/include/net/mana/gdma.h
+index 62e9d7673862..1865e5aa2c62 100644
+--- a/include/net/mana/gdma.h
++++ b/include/net/mana/gdma.h
+@@ -778,6 +778,7 @@ struct gdma_destroy_dma_region_req {
+ 
+ enum gdma_pd_flags {
+ 	GDMA_PD_FLAG_INVALID = 0,
++	GDMA_PD_FLAG_ALLOW_GPA_MR = 1,
+ };
+ 
+ struct gdma_create_pd_req {
+-- 
+2.47.2
+
