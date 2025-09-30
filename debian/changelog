@@ -12,6 +12,7 @@ linux (6.17-1~exp1) UNRELEASED; urgency=medium
   * drivers/leds/trigger: Enable LEDS_TRIGGER_INPUT_EVENTS as module
     (Closes: #1113681)
   * Compile with gcc-15 on all architectures
+  * drivers/soundwire: Enable SOUNDWIRE_AMD as module (Closes: #1115613)
 
   [ Santiago Ruano Rincón ]
   * d/salsa-ci.yml: Merge the extract-source job into the build's job script
