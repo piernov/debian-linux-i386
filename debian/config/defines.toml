@@ -160,8 +160,10 @@ name_regex = '.*'
 
 [description.long]
 rt = 'This kernel is configured with PREEMPT_RT real time support.'
+debug = 'This kernel is configured with DEBUG configs support.'
 [description.short]
 rt = 'PREEMPT_RT'
+debug = 'DEBUG'
 
 [build]
 compiler = 'gcc-15'

@@ -2,6 +2,9 @@ linux (6.18~rc6-1~exp1) experimental; urgency=medium
 
   * New upstream release candidate.
 
+  [ Yunseong Kim ]
+  * debian/config: Add debug kernel flavor for amd64 and arm64
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 17 Nov 2025 22:45:00 +0100
 
 linux (6.18~rc5-1~exp1) experimental; urgency=medium

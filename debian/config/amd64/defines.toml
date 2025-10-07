@@ -32,6 +32,15 @@ config = ['config.test', 'amd64/config.test']
 [flavour.defs]
 is_test = true
 
+[[flavour]]
+name = 'debug-amd64'
+[flavour.build]
+config = ['config.debug']
+[flavour.description]
+hardware = '64-bit PCs'
+hardware_long = 'PCs with AMD64, Intel 64 or VIA Nano processors'
+parts = ['debug']
+
 [[featureset]]
 name = 'none'
 
