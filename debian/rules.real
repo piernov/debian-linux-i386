@@ -182,6 +182,7 @@ $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): SOURCE_DIR=$(BUILD_DIR)/so
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): DIR=$(BUILD_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): OUTPUT_DIR=$(DIR)/output/image
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): OUTPUT_DIR_DBG=$(DIR)/output/image-dbg
+$(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): OUTPUT_DIR_MODULES=$(DIR)/output/modules
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): export KBUILD_SIGN_PIN = $(shell dd if=/dev/random bs=16 count=1 status=none | base64)
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): $(STAMPS_DIR)/setup_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
 	rm -rf '$(DIR)/output'
@@ -210,7 +211,7 @@ endif
 # cmd_depmod=: Don't run depmod to generate dependency files
 	+$(MAKE_CLEAN) -C $(DIR) modules_install \
 		cmd_depmod= \
-		INSTALL_MOD_PATH='$(CURDIR)/$(OUTPUT_DIR)' \
+		INSTALL_MOD_PATH='$(CURDIR)/$(OUTPUT_DIR_MODULES)' \
 		INSTALL_MOD_STRIP=1
 
 	rm $(DIR)/output/signing_key.pem
@@ -226,13 +227,15 @@ endif
 
 ifeq ($(ENABLE_DTB),True)
 	+$(MAKE_CLEAN) -C $(DIR) dtbs
-	+$(MAKE_CLEAN) -C $(DIR) dtbs_install INSTALL_DTBS_PATH='$(CURDIR)/$(OUTPUT_DIR)/lib/modules/$(REAL_VERSION)/dtb'
+	+$(MAKE_CLEAN) -C $(DIR) dtbs_install INSTALL_DTBS_PATH='$(CURDIR)/$(OUTPUT_DIR_MODULES)/lib/modules/$(REAL_VERSION)/dtb'
 endif
 
 	rm -f $(OUTPUT_DIR)/lib/modules/$(REAL_VERSION)/build
 	rm -f $(OUTPUT_DIR)/lib/modules/$(REAL_VERSION)/source
 	rm -f $(OUTPUT_DIR_DBG)/lib/modules/$(REAL_VERSION)/build
 	rm -f $(OUTPUT_DIR_DBG)/lib/modules/$(REAL_VERSION)/source
+	rm -f $(OUTPUT_DIR_MODULES)/lib/modules/$(REAL_VERSION)/build
+	rm -f $(OUTPUT_DIR_MODULES)/lib/modules/$(REAL_VERSION)/source
 
 	+$(MAKE_CLEAN) -C $(DIR) vdso_install \
 		cmd_symlink= \
@@ -496,6 +499,15 @@ binary_image-di:
 	$(dh_binary_pre)
 	$(dh_binary_post)
 
+build_modules: $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
+
+binary_modules: DH_INSTALL_ARGS = --sourcedir=$(BUILD_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)/output/modules
+binary_modules: DH_STRIP_ARGS = --no-automatic-dbgsym
+binary_modules: $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
+binary_modules:
+	$(dh_binary_pre)
+	$(dh_binary_post)
+
 build_signed-template:
 
 binary_signed-template: GEN_DIR = debian/generated.signed-$(ARCH)
@@ -528,7 +540,7 @@ build_installer:
 
 binary_installer: export KW_DEFCONFIG_DIR=debian/installer
 binary_installer: export KW_CONFIG_DIR=debian/installer
-binary_installer: export SOURCEDIR = $(BUILD_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)/output/image
+binary_installer: export SOURCEDIR = $(BUILD_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)/output/modules
 binary_installer: REAL_VERSION = $(ABINAME)$(LOCALVERSION)
 binary_installer: $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
 	$(dh_binary_pre)
