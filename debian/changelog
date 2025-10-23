@@ -16,6 +16,8 @@ linux (6.17.4-1~exp1) UNRELEASED; urgency=medium
   [ Bastian Blank ]
   * [ppc64, ppc64el] Drop installation of unavailable crtsavres.o.
   * [s390x] Drop unavailable netiucv module.
+  * Unsplit configs for some kernel architectures.  We don't support multiple
+    variants of sparc or x86 anymore.
 
   [ Emanuele Rocca ]
   * [arm64] Enable ARM_FFA_TRANSPORT as module
