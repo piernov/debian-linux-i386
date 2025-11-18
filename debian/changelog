@@ -10,6 +10,9 @@ linux (6.18.2-1~exp2) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * drm/amdgpu: don't attach the tlb fence for SI (Closes: #1123046)
 
+  [ Macpaul Lin ]
+  * udeb: Add USB TYPE-C and Mux modules in usb-modules
+
  -- Aurelien Jarno <aurel32@debian.org>  Thu, 18 Dec 2025 23:49:23 +0100
 
 linux (6.18.2-1~exp1) experimental; urgency=medium
