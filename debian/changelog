@@ -30,6 +30,9 @@ linux (6.18-1~exp1) UNRELEASED; urgency=medium
   * Move dtb into modules directory.
   * Convert doc to symlink in linux-libc-dev-*-cross.
 
+  [ John Paul Adrian Glaubitz ]
+  * [sparc64] Add patch to update uapi headers for glibc >= 2.42
+
  -- Bastian Blank <waldi@debian.org>  Thu, 27 Nov 2025 13:45:55 +0100
 
 linux (6.18~rc7-1~exp1) experimental; urgency=medium
