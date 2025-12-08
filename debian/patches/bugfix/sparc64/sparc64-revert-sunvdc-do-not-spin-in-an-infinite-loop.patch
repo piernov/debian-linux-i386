@@ -1,0 +1,74 @@
+From 67e705abd1e9fc423916914fcc9c027cd12efebd Mon Sep 17 00:00:00 2001
+From: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Date: Mon, 6 Oct 2025 11:40:52 +0200
+Subject: [PATCH] Revert "sunvdc: Do not spin in an infinite loop when
+ vio_ldc_send() returns EAGAIN"
+
+In a11f6ca9aef9 ("sunvdc: Do not spin in an infinite loop when vio_ldc_send()
+returns EAGAIN"), a maximum retry count was added to __vdc_tx_trigger().
+
+After this change, several users reported disk I/O errors when running Linux
+inside a logical domain on Solaris 11.4:
+
+[19095.192532] sunvdc: vdc_tx_trigger() failure, err=-11
+[19095.192605] I/O error, dev vdiskc, sector 368208928 op 0x1:(WRITE) flags 0x1000 phys_seg 2 prio class 2
+[19095.205681] XFS (vdiskc1): metadata I/O error in "xfs_buf_ioend+0x28c/0x600 [xfs]" at daddr 0x15f26420 len 32 error 5
+[19432.043471] sunvdc: vdc_tx_trigger() failure, err=-11
+[19432.043529] I/O error, dev vdiskc, sector 3732568 op 0x1:(WRITE) flags 0x1000 phys_seg 1 prio class 2
+[19432.058821] sunvdc: vdc_tx_trigger() failure, err=-11
+[19432.058843] I/O error, dev vdiskc, sector 3736256 op 0x1:(WRITE) flags 0x1000 phys_seg 4 prio class 2
+[19432.074109] sunvdc: vdc_tx_trigger() failure, err=-11
+[19432.074128] I/O error, dev vdiskc, sector 3736512 op 0x1:(WRITE) flags 0x1000 phys_seg 4 prio class 2
+[19432.089425] sunvdc: vdc_tx_trigger() failure, err=-11
+[19432.089443] I/O error, dev vdiskc, sector 3737024 op 0x1:(WRITE) flags 0x1000 phys_seg 1 prio class 2
+[19432.100964] XFS (vdiskc1): metadata I/O error in "xfs_buf_ioend+0x28c/0x600 [xfs]" at daddr 0x38ec58 len 8 error 5
+
+Since this change seems to have only been justified by reading the code which
+becomes evident by the reference to adddc32d6fde ("sunvnet: Do not spin in an
+infinite loop when vio_ldc_send() returns EAGAIN") in the commit message, it
+can be safely assumed that the change was neither properly tested nor motivated
+by any actual bug reports.
+
+Thus, let's revert this change to address the disk I/O errors above.
+
+Cc: stable@vger.kernel.org
+Fixes: a11f6ca9aef9 ("sunvdc: Do not spin in an infinite loop when vio_ldc_send() returns EAGAIN")
+
+Signed-off-by: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+---
+ drivers/block/sunvdc.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/drivers/block/sunvdc.c b/drivers/block/sunvdc.c
+index 282f81616a78..f56023c2b033 100644
+--- a/drivers/block/sunvdc.c
++++ b/drivers/block/sunvdc.c
+@@ -45,8 +45,6 @@ MODULE_VERSION(DRV_MODULE_VERSION);
+ #define WAITING_FOR_GEN_CMD	0x04
+ #define WAITING_FOR_ANY		-1
+ 
+-#define	VDC_MAX_RETRIES	10
+-
+ static struct workqueue_struct *sunvdc_wq;
+ 
+ struct vdc_req_entry {
+@@ -437,7 +435,6 @@ static int __vdc_tx_trigger(struct vdc_port *port)
+ 		.end_idx		= dr->prod,
+ 	};
+ 	int err, delay;
+-	int retries = 0;
+ 
+ 	hdr.seq = dr->snd_nxt;
+ 	delay = 1;
+@@ -450,8 +447,6 @@ static int __vdc_tx_trigger(struct vdc_port *port)
+ 		udelay(delay);
+ 		if ((delay <<= 1) > 128)
+ 			delay = 128;
+-		if (retries++ > VDC_MAX_RETRIES)
+-			break;
+ 	} while (err == -EAGAIN);
+ 
+ 	if (err == -ENOTCONN)
+-- 
+2.47.3
+
