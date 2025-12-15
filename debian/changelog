@@ -1,3 +1,9 @@
+linux (6.18.1-1~exp2) UNRELEASED; urgency=medium
+
+  * Split kernel modules into own package.
+
+ -- Bastian Blank <waldi@debian.org>  Mon, 15 Dec 2025 21:10:46 +0100
+
 linux (6.18.1-1~exp1) experimental; urgency=medium
 
   * New upstream release: https://kernelnewbies.org/Linux_6.18
