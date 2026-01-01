@@ -223,6 +223,11 @@ linux (6.17.2-1~exp1) experimental; urgency=medium
     - Only trust Machine Owner Key (MOK) if enabled.
     - Don't longer use UEFI DBX for module denylisting.
 
+  [ Martin Kepplinger ]
+  * [arm64] enable the Mantix panel of the Librem 5 phone
+  * [arm64] enable audio codec used on the Librem 5 phone
+  * d/config: media: enable the hi846 i2c camera sensor
+
   [ Salvatore Bonaccorso ]
   * net: ipv4: fix regression in local-broadcast routes
   * drivers/leds/trigger: Enable LEDS_TRIGGER_INPUT_EVENTS as module
