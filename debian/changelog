@@ -1291,6 +1291,7 @@ linux (6.12.63-1) trixie; urgency=medium
   [ piernov ]
   * Revert "[i386] Stop building kernel packages"
   * [i386] udeb: Fold i2c-modules into kernel-image (fixes FTBFS on alpha, sparc64)
+  * [i386] udeb: Fold event-modules and mouse-modules into input-modules
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 30 Dec 2025 20:37:47 +0100
 
