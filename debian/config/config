@@ -6388,9 +6388,9 @@ CONFIG_RUST=y
 ##
 ## choice: Timer frequency
 # CONFIG_HZ_100 is not set
-CONFIG_HZ_250=y
+# CONFIG_HZ_250 is not set
 # CONFIG_HZ_300 is not set
-# CONFIG_HZ_1000 is not set
+CONFIG_HZ_1000=y
 ## end choice
 
 ##
