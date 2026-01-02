@@ -156,6 +156,7 @@ Package: fat-modules
 Depends: kernel-image
 Priority: optional
 Priority_amd64: standard
+Priority_i386: standard
 Description: FAT filesystem support
  This package contains the FAT and VFAT filesystem modules for the kernel.
 
