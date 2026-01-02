@@ -6,3 +6,6 @@ thermal
 
 # Optimised CRC32
 crc32_pclmul
+
+# SPI devices
+drivers/spi/**
