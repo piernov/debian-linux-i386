@@ -1297,6 +1297,7 @@ linux (6.12.63-1) trixie; urgency=medium
   * [i386] udeb: Fold crc-modules into kernel-image
   * [i386] udeb: kernel-image: Include SPI drivers
   * [i386] udeb: Fold leds-modules into kernel-image
+  * [i386] Compress kernel with xz instead of zstd
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 30 Dec 2025 20:37:47 +0100
 
