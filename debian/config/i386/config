@@ -491,3 +491,10 @@ CONFIG_SND_MSND_CLASSIC=m
 CONFIG_SND_CS5530=m
 CONFIG_SND_CS5535AUDIO=m
 CONFIG_SND_SIS7019=m
+
+##
+## file: init/Kconfig
+##
+## choice: Kernel compression mode
+CONFIG_KERNEL_XZ=y
+## end choice
